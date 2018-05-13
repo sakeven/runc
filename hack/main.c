@@ -11,8 +11,6 @@
 int main() {
 	system("ls -l proc");
 	system("cat /proc/1/status");
-	system("cat /proc/4/status");
-	system("cat /proc/5/status");
 	//execl("./test.sh", "./test.sh",  (char *)NULL);
 	return 0;
 }

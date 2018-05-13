@@ -11,7 +11,6 @@ import (
 func main() {
 	runtime.LockOSThread()
 	fmt.Printf("uid is %d\n", os.Getuid())
-	fmt.Println("vim-go")
 
 	syscall.Mount("proc", "/proc", "proc", 0, "")
 	err := syscall.Exec("./main", []string{"./main"}, nil)

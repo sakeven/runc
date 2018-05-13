@@ -1,3 +1,6 @@
 *.json*
 .idea
 .DS_Store
+root/init
+root/main
+main

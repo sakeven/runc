@@ -18,7 +18,7 @@ func C() error {
 
 	// cmd := exec.CommandContext(ctx, "./cmain")
 
-	cmd := exec.Command("./cmain")
+	cmd := exec.Command("./init")
 	cmd.Dir = "./root"
 	cmd.SysProcAttr = &syscall.SysProcAttr{
 		Chroot: "./root",
@@ -39,14 +39,9 @@ func C() error {
 	cmd.ExtraFiles = []*os.File{}
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
-	err = cmd.Start()
+	err := cmd.Start()
 	if err != nil {
 		log.Printf("error %s", err)
-		return err
-	}
-
-	err = cmd.Start()
-	if err != nil {
 		return err
 	}
 
