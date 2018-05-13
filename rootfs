@@ -1,0 +1,47 @@
+bash and ls:
+.
+├── bin
+│   ├── bash
+│   └── sh
+├── cmain
+├── lib
+│   └── x86_64-linux-gnu
+│       ├── libc.so.6
+│       ├── libdl.so.2
+│       └── libtinfo.so.5
+├── lib64
+│   └── ld-linux-x86-64.so.2
+└── main.c
+
+
+java :
+
+usr
+├── bin
+│   └── java
+└── lib
+    ├── jvm
+    │   ├── java-1.8.0-openjdk-amd64 -> java-8-openjdk-amd64
+    │   ├── java-8-openjdk-amd64
+    │   └── java-9-openjdk-amd64
+    └── x86_64-linux-gnu
+        ├── librt.so
+        └── libstdc++.so.6
+lib
+└── x86_64-linux-gnu
+    ├── libc.so.6
+    ├── libdl.so.2
+    ├── libgcc_s.so.1
+    ├── libm.so.6
+    ├── libpcre.so.3
+    ├── libpthread.so.0
+    ├── libselinux.so.1
+    ├── libtinfo.so.5
+    └── libz.so.1
+lib64
+└── ld-linux-x86-64.so.2
+bin
+├── bash
+├── java -> /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+├── ls
+└── sh

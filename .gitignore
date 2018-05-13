@@ -1,0 +1,4 @@
+bin
+*.json*
+.idea
+.DS_Store
