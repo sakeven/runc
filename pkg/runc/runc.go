@@ -1,6 +1,7 @@
 package runc
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -16,6 +17,14 @@ type Config struct {
 	RootfsDir   string
 	Chroot      bool
 	InitProcess []string
+	Rlimits     []Rlimit
+}
+
+// Rlimit represents resource limit
+type Rlimit struct {
+	Type int
+	Hard uint64
+	Soft uint64
 }
 
 // Runc handles container process.
@@ -47,13 +56,17 @@ func newCommand(cfg *Config) *exec.Cmd {
 		GidMappings: []syscall.SysProcIDMap{
 			{ContainerID: 0, HostID: os.Getgid(), Size: 1},
 		},
+		//		AmbientCaps: []uintptr{24},
 	}
 	if cfg.Chroot {
 		cmd.SysProcAttr.Chroot = cfg.RootfsDir
 	}
 	cmd.ExtraFiles = []*os.File{}
 	cmd.Stdout = os.Stdout
+	cmd.Stdin = os.Stdin
 	cmd.Stderr = os.Stderr
+	b, _ := json.Marshal(cfg)
+	cmd.Env = []string{fmt.Sprintf("CONFIG=%s", b)}
 	return cmd
 }
 
