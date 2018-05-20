@@ -20,6 +20,7 @@ void sigroutine(int dunno) {
   exit(1);
 }
 
+int map[1000][10000];
 int main() {
   signal(SIGQUIT, sigroutine); 
   signal(SIGKILL, sigroutine); 
@@ -27,10 +28,13 @@ int main() {
   printf("hello world\n");
   printf("uid %d pid %d\n", getuid(), getpid());
   int i = 0;
-  while (1) {
-    i ++;
-  }
+  //return 0;
+  // printf("%d", i/0);
+ // while (1) {
+  // i ++;
+ // }
   printf("%d", i);
+  printf("map %d\n", map[0][0]);
   int *mem = (int *)malloc(sizeof(int)*1000*1000);
   if( mem == NULL) {
     printf("alloc failed");
@@ -43,11 +47,6 @@ int main() {
   return 0;
 }
 `
-
-const STD_MB = 1048576
-const STD_T_LIM = 2
-const STD_F_LIM = (STD_MB << 5)
-const STD_M_LIM = (STD_MB << 7)
 
 func main() {
 	compiler := &compile.Compiler{}
@@ -64,7 +63,7 @@ func main() {
 		Rlimits: []runc.Rlimit{
 			{
 				Type: consts.RLIMIT_CPU,
-				Hard: 1,
+				Hard: 2,
 				Soft: 1,
 			},
 			{
@@ -84,7 +83,7 @@ func main() {
 			},
 			{
 				Type: consts.RLIMIT_AS,
-				Hard: consts.STD_MB << 4,
+				Hard: consts.STD_MB << 5,
 				Soft: consts.STD_MB << 4,
 			},
 		},
